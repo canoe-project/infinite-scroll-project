@@ -1,0 +1,62 @@
+[
+    {
+        "index": "01",
+        "name": "index1",
+        "image": "/images/img.jpg",
+        "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
+    },
+    {
+        "index": "02",
+        "name": "index2",
+        "image": "/images/img.jpg",
+        "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
+    },
+    {
+        "index": "03",
+        "name": "index3",
+        "image": "/images/img.jpg",
+        "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
+    },
+    {
+        "index": "04",
+        "name": "index4",
+        "image": "/images/img.jpg",
+        "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
+    },
+    {
+        "index": "05",
+        "name": "index5",
+        "image": "/images/img.jpg",
+        "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
+    },
+    {
+        "index": "06",
+        "name": "index6",
+        "image": "/images/img.jpg",
+        "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
+    },
+    {
+        "index": "07",
+        "name": "index7",
+        "image": "/images/img.jpg",
+        "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
+    },
+    {
+        "index": "08",
+        "name": "index8",
+        "image": "/images/img.jpg",
+        "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
+    },
+    {
+        "index": "09",
+        "name": "index9",
+        "image": "/images/img.jpg",
+        "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
+    },
+    {
+        "index": "10",
+        "name": "index10",
+        "image": "/images/img.jpg",
+        "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
+    }
+]
