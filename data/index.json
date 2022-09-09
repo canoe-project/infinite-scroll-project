@@ -1,62 +1,62 @@
 [
     {
         "index": "01",
-        "name": "index1",
-        "image": "/images/img.jpg",
+        "name": "Jurm",
+        "image": "/images/andrea-cau-nV7GJmSq3zc-unsplash.jpg",
         "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
     },
     {
         "index": "02",
-        "name": "index2",
-        "image": "/images/img.jpg",
+        "name": "Balkh",
+        "image": "/images/ben-o-bro-wpU4veNGnHg-unsplash.jpg",
         "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
     },
     {
         "index": "03",
-        "name": "index3",
-        "image": "/images/img.jpg",
+        "name": "Herat",
+        "image": "/images/boxed-water-is-better-6WrKKQcEnXk-unsplash.jpg",
         "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
     },
     {
         "index": "04",
-        "name": "index4",
-        "image": "/images/img.jpg",
+        "name": "Kabul",
+        "image": "/images/dawson-lovell-W_MUqtuHwyY-unsplash.jpg",
         "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
     },
     {
         "index": "05",
-        "name": "index5",
-        "image": "/images/img.jpg",
+        "name": "Rudbar",
+        "image": "/images/henning-witzel-ukvgqriuOgo-unsplash.jpg",
         "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
     },
     {
         "index": "06",
-        "name": "index6",
-        "image": "/images/img.jpg",
+        "name": "'Ali Khayl",
+        "image": "/images/matt-jones-9CPAjGVB378-unsplash (1).jpg",
         "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
     },
     {
         "index": "07",
-        "name": "index7",
-        "image": "/images/img.jpg",
+        "name": "Dasht-e Archa",
+        "image": "/images/matt-jones-9CPAjGVB378-unsplash.jpg",
         "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
     },
     {
         "index": "08",
-        "name": "index8",
-        "image": "/images/img.jpg",
+        "name": "Dasht-e Archa",
+        "image": "/images/max-bender-VmX3vmBecFE-unsplash.jpg",
         "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
     },
     {
         "index": "09",
-        "name": "index9",
-        "image": "/images/img.jpg",
+        "name": "Tarin Kawt",
+        "image": "/images/pedro-lastra-Nyvq2juw4_o-unsplash.jpg",
         "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
     },
     {
         "index": "10",
-        "name": "index10",
-        "image": "/images/img.jpg",
+        "name": "Maydanshahr",
+        "image": "/images/redd-Dl_Ya8eNRpk-unsplash.jpg",
         "location": "50° 37' 7.2516'' — 30° 26' 25.0584''"
     }
 ]

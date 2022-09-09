@@ -1,10 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 
-const lerp = (v0, v1, t) => {
-  return v0 * (1 - t) + v1 * t;
-};
-
-export function useSideScroll(callback, listRef) {
+export function useSideScroll(listRef) {
   useEffect(() => {
     const el = listRef.current;
     if (el) {
@@ -16,9 +12,16 @@ export function useSideScroll(callback, listRef) {
           behavior: "auto",
         });
         if (el.scrollLeft / (el.scrollWidth - el.clientWidth) >= 1) {
-          callback();
+          el.scrollTo({
+            left: 0,
+          });
+        } else if (el.scrollLeft / (el.scrollWidth - el.clientWidth) <= 0) {
+          el.scrollTo({
+            left: el.scrollWidth - el.clientWidth,
+          });
         }
       };
+
       el.addEventListener("wheel", (e) => {
         onWheel(e);
       });

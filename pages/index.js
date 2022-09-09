@@ -5,27 +5,26 @@ import { useState, useEffect } from "react";
 import Card from "../components/Card/ItemCard";
 import List from "../components/List/CardList";
 import MainLayout from "../components/Layout/MainLayout";
-import Head from "next/head";
-import Image from "next/image";
+import useStyleCard from "../hook/useStyleCard";
 
-const Home = ({ data }) => {
+const Home = ({ data, mainHeadCopy }) => {
   const [listData, setListData] = useState("");
+  const [headCopy, setHeadCopy] = useState("");
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setListData(data);
-    setLoading(false);
-  }, []);
-
-  const addList = () => {
-    setListData((prevList) => {
-      return [...prevList, ...data];
-    });
+  const dark = {
+    backgroundColor: "#1c1c21",
   };
+
+  useEffect(() => {
+    Promise.all([setListData(data), setHeadCopy(mainHeadCopy)]).then(() => {
+      setLoading(false);
+    });
+  }, [data, mainHeadCopy]);
 
   if (loading) return <div>loading</div>;
   return (
-    <MainLayout>
-      <List callback={addList}>
+    <MainLayout mainHeadCopy={headCopy}>
+      <List>
         {listData.map((info, idx) => {
           return (
             <Card
@@ -34,6 +33,7 @@ const Home = ({ data }) => {
               name={info.name}
               image={info.image}
               location={info.location}
+              mod={dark}
             ></Card>
           );
         })}
@@ -50,7 +50,17 @@ export const getServerSideProps = async (context) => {
     return await response.json();
   });
 
-  return { props: { data } };
+  const mainHeadCopy = await fetch(
+    `${process.env.HOSTNAME}/api/copys/headcopy`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  ).then(async (response) => {
+    return await response.json();
+  });
+
+  return { props: { data, mainHeadCopy } };
 };
 
 export default Home;
