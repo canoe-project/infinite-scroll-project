@@ -4,7 +4,9 @@ import Image from "next/image";
 const OverlayImage = ({ src }) => {
   return (
     <Fragment>
-      <Image src={src} alt="" className="absolute p-2 " layout="fill"></Image>
+      <div className="absolute flex w-[20.2em] h-[24.79em]  object-center ">
+        <Image src={src} alt="" layout="fill"></Image>
+      </div>
     </Fragment>
   );
 };

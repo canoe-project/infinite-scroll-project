@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^6.3.1",
     "lodash": "^4.17.21",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sharp": "^0.31.0",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "@types/node": "18.7.15",
