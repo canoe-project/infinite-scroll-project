@@ -1,17 +1,12 @@
 import { Fragment, useState, useEffect } from "react";
 import Museum from "../../svg/powerhouse-museum.svg";
-import Link from "next/link";
-const Header = () => {
-  useEffect(() => {
-    console.log(Museum);
-  }, []);
+
+const Header = ({ copy }) => {
   return (
-    <div className="px-[2.6em]">
-      <div className="flex flex-row  w-full justify-between py-4">
-        <Museum className="w-[12em]" />
-        <div className="flex"></div>
-      </div>
-    </div>
+    <header className="flex flex-row py-4">
+      <Museum className="h-20 self-start" />
+      <div className="pl-[40%] font[400] text-[2.81em] uppercase">{copy}</div>
+    </header>
   );
 };
 

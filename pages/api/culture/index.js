@@ -19,21 +19,21 @@ const handler = async (req, res) => {
 };
 
 const getData = async (req, res) => {
-  const apiData = await fetch(
-    `http://api.kcisa.kr/openapi/service/rest/meta2020/getMCHBholdings?serviceKey=3616d4bb-758d-46a7-a3a4-f86f2b9bfc1d&numOfRows=10`,
+  const pageNo = req.query.pageNo;
+
+  const numOfRows = "10";
+  const response = await fetch(
+    `http://api.kcisa.kr/openapi/service/rest/meta2020/getMCHBholdings?serviceKey=${
+      process.env.CUL_SERVICE_KEY
+    }&numOfRows=${numOfRows}&pageNo=${pageNo === undefined ? "1" : pageNo}`,
     {
       method: "GET",
       headers: { "Content-Type": "application/xhtml+xml" },
     }
-  )
-    .then((response) => response.text())
-    .then(async (responseText) => {
-      return await promisify(parseString)(responseText);
-    })
-    .then((data) => {
-      return data.response.body[0].items[0].item;
-    });
-  res.json(apiData);
-  resolve();
+  );
+  const responseText = await response.text();
+  const responseObj = await promisify(parseString)(responseText);
+
+  res.json(await responseObj.response.body[0].items[0].item);
 };
 export default handler;

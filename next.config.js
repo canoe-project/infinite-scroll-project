@@ -7,6 +7,8 @@ const nextConfig = {
   },
   env: {
     HOSTNAME: process.env.HOSTNAME,
+    CUL_SERVICE_KEY: process.env.CUL_SERVICE_KEY,
+    CUL_GITHUB_PAGE: process.env.CUL_GITHUB_PAGE,
   },
   webpack(config) {
     config.module.rules.push({

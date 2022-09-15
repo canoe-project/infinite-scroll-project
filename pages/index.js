@@ -1,106 +1,119 @@
 // import type { NextPage } from 'next'
 // import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Card from "../components/Card/ItemCard";
 import List from "../components/List/CardList";
 import MainLayout from "../components/Layout/MainLayout";
 import ScrollBar from "../components/Scroll/ScrollBar";
+import throttle from "lodash/throttle";
 
-const Home = ({
-  // data,
-  mainHeadCopy,
-  cultureData,
-}) => {
-  // const [listData, setListData] = useState("");
+const reqCul = async (pageNo) => {
+  const cultureRes = await fetch(
+    `${process.env.HOSTNAME}/api/culture/static?pageNo=${pageNo}`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+  const cultureData = await cultureRes.json();
+  return cultureData;
+};
+
+const Home = ({ mainHeadCopy, cultureData }) => {
+  //data state
   const [headCopy, setHeadCopy] = useState("");
   const [culture, setculture] = useState({});
   const [loading, setLoading] = useState(true);
+  const [pageNo, setPageNo] = useState();
+
+  //style state
   const [marginTops, setMarginTops] = useState([5.21, 3, 0]);
   const [marginBottoms, setMarginBottoms] = useState([0, 3, 5.21]);
 
+  //ref
   const barRef = useRef();
+  const listRef = useRef();
+
+  //useCallback
+  const listHandle = useCallback(
+    throttle(() => {
+      setPageNo((prePage) => prePage + 1);
+    }, 600),
+    []
+  );
+
+  //useEffect
   useEffect(() => {
-    Promise.all([
-      // setListData(data),
-      setHeadCopy(mainHeadCopy),
-      setculture(cultureData),
-    ]).then(() => {
-      setLoading(false);
-      console.log(cultureData);
-    });
-  }, [
-    // data,
-    mainHeadCopy,
-    cultureData,
-  ]);
+    setPageNo(2);
+  }, []);
+
+  useEffect(() => {
+    Promise.all([setHeadCopy(mainHeadCopy), setculture(cultureData)]).then(() =>
+      setLoading(false)
+    );
+  }, [mainHeadCopy, cultureData]);
+
+  useEffect(() => {
+    if (!(pageNo > 10) && pageNo !== undefined) {
+      reqCul(pageNo).then((cultureData) => {
+        setculture((preCulture) => [...preCulture, ...cultureData]);
+      });
+    }
+    // else if (pageNo > 10) {
+    //   listRef.current.scrollTo({
+    //     left: 0,
+    //   });
+    // }
+  }, [pageNo]);
 
   if (loading) return <div>loading</div>;
   return (
     <MainLayout mainHeadCopy={headCopy}>
-      {/* <List barRef={barRef}>
-        {listData.map((info, idx) => {
-          return (
-            <Card
-              key={idx}
-              index={idx}
-              name={info.name}
-              image={info.image}
-              location={info.location}
-              marginTops={marginTops}
-              marginBottoms={marginBottoms}
-            ></Card>
-          );
-        })}
-      </List> */}
-      <List barRef={barRef}>
+      <List
+        bar={<ScrollBar barRef={barRef} />}
+        handle={listHandle}
+        barRef={barRef}
+      >
         {culture.map((info, idx) => {
           return (
             <Card
               key={idx}
               index={idx}
-              name={info.title[0]}
-              image={info.referenceIdentifier[0]}
-              location={info.publisher[0]}
+              name={info.title}
+              image={info.referenceIdentifier}
+              location={info.publisher}
               marginTops={marginTops}
               marginBottoms={marginBottoms}
             ></Card>
           );
         })}
       </List>
-      <ScrollBar barRef={barRef}></ScrollBar>
     </MainLayout>
   );
 };
 
 export const getServerSideProps = async (context) => {
-  const cultureData = await fetch(`${process.env.HOSTNAME}/api/culture`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  }).then(async (response) => {
-    return await response.json();
-  });
+  const cultureRes = await fetch(
+    `${process.env.HOSTNAME}/api/culture/static?pageNo=1`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+  const cultureData = await cultureRes.json();
 
-  // const data = await fetch(`${process.env.HOSTNAME}/api/files`, {
-  //   method: "GET",
-  //   headers: { "Content-Type": "application/json" },
-  // }).then(async (response) => {
-  //   return await response.json();
-  // });
-
-  const mainHeadCopy = await fetch(
+  const mainHeadCopyRes = await fetch(
     `${process.env.HOSTNAME}/api/copys/headcopy`,
     {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }
-  ).then(async (response) => {
-    return await response.json();
-  });
+  );
+  const mainHeadCopy = await mainHeadCopyRes.json();
 
   return {
     props: {
-      // data,
       mainHeadCopy,
       cultureData,
     },

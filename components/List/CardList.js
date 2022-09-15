@@ -1,17 +1,19 @@
-import { Fragment, useState, useEffect, useRef, useCallback } from "react";
+import { Fragment, useState, useEffect, useRef, cloneElement } from "react";
 import { useSideScroll } from "../../hook/useSideScroll";
 import { useRotateScroll } from "../../hook/useRotateScroll";
+import { useScrollBar } from "hook/useScrollBar";
 
-const List = ({ children, barRef }) => {
+const List = ({ children, bar, barRef, handle }) => {
   const listRef = useRef();
 
-  useSideScroll(listRef, barRef);
+  useSideScroll(listRef, handle);
   useRotateScroll(listRef);
+  useScrollBar(listRef, barRef);
 
   return (
-    <Fragment>
+    <div className="relative">
       <div
-        className={` flex overflow-x-auto scrollbar-hide min-h-[30em] transition duration-500 ease-out flex-auto`}
+        className={`flex overflow-x-auto scrollbar-hide min-h-[30em] transition duration-500 ease-out flex-auto z-10 relative`}
         ref={listRef}
         onWheelCapture={() => {
           setInterval(() => {
@@ -21,7 +23,8 @@ const List = ({ children, barRef }) => {
       >
         {children}
       </div>
-    </Fragment>
+      {cloneElement(bar)}
+    </div>
   );
 };
 
