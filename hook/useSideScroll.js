@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from "react";
 export function useSideScroll(listRef, handle) {
   useEffect(() => {
     const el = listRef.current;
-    console.log(el);
+
     if (el !== undefined) {
       const onWheel = (e) => {
         if (e.deltaY == 0) return;

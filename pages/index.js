@@ -59,12 +59,11 @@ const Home = ({ mainHeadCopy, cultureData }) => {
       reqCul(pageNo).then((cultureData) => {
         setculture((preCulture) => [...preCulture, ...cultureData]);
       });
+    } else if (pageNo > 10) {
+      listRef.current.scrollTo({
+        left: 0,
+      });
     }
-    // else if (pageNo > 10) {
-    //   listRef.current.scrollTo({
-    //     left: 0,
-    //   });
-    // }
   }, [pageNo]);
 
   if (loading) return <div>loading</div>;
@@ -74,6 +73,7 @@ const Home = ({ mainHeadCopy, cultureData }) => {
         bar={<ScrollBar barRef={barRef} />}
         handle={listHandle}
         barRef={barRef}
+        listRef={listRef}
       >
         {culture.map((info, idx) => {
           return (

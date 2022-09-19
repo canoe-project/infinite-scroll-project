@@ -3,9 +3,7 @@ import { useSideScroll } from "../../hook/useSideScroll";
 import { useRotateScroll } from "../../hook/useRotateScroll";
 import { useScrollBar } from "hook/useScrollBar";
 
-const List = ({ children, bar, barRef, handle }) => {
-  const listRef = useRef();
-
+const List = ({ children, bar, barRef, handle, listRef }) => {
   useSideScroll(listRef, handle);
   useRotateScroll(listRef);
   useScrollBar(listRef, barRef);
