@@ -1,6 +1,6 @@
 const ScrollBar = ({ barRef }) => {
   return (
-    <div className="absolute bottom-0 flex flex-col w-full py-4">
+    <div className="absolute bottom-0 flex flex-col w-full py-4 font-['Noto_Sans_KR'] font-normal">
       <div className="bg-[#C2A38E] h-[0.18em] mb-2" />
       <div className="flex flex-row justify-between w-full">
         <div>

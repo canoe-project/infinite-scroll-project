@@ -54,15 +54,15 @@ const ItemCard = ({
 
         {/*detail data*/}
         <div
-          className={`flex flex-col  self-start p-12 bg-white border-[0.4em] border-[#C2A38E] h-[30em] text-[#22223B] overflow-auto transition ease-in-out delay-150 scrollbar-hide  ${
-            cardClick === false ? "scale-x-0 w-0" : "scale-x-100 w-[35em]"
+          className={`flex flex-col  self-start bg-white h-[30em] text-[#22223B] overflow-auto transition ease-in-out delay-150 scrollbar-hide drop-shadow-md text-center ${
+            cardClick === false
+              ? "scale-x-0 w-0 p-0"
+              : "scale-x-100 w-[35em] p-8"
           }`}
         >
-          <ArtNouveauLine className="self-center h-7" />
-          <h3 className="my-5 font-['Do_Hyeon'] text-4xl font-semibold p-8">
-            {name}
-          </h3>
-          <ArtNouveauLine className="rotate-180 h-7" />
+          <ArtNouveauLine className="self-center h-7 fill-[#C2A38E]" />
+          <h3 className={`my-5 font-['Do_Hyeon'] text-2xl  `}>{name}</h3>
+          <ArtNouveauLine className="rotate-180 h-7 fill-[#C2A38E]" />
           <p className="mt-8 font-['Noto_Sans_KR'] font-normal">
             {description}
           </p>

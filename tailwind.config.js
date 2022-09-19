@@ -12,6 +12,9 @@ module.exports = {
           "0%": { transform: "rotate(0deg)" },
         },
       },
+      transitionProperty: {
+        width: "width",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar-hide")],
