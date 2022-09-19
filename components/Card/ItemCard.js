@@ -1,9 +1,10 @@
 import { Fragment, useState, useEffect, useRef } from "react";
 
 import OverLayImage from "../Image/OverlayImage";
-import Link from "next/link";
-import useClickCard from "hook/useClickCard";
 
+import ArtNouveauLine from "svg/Art_Nouveau_line.svg";
+
+// import useClickCard from "hook/useClickCard";
 const cardStyle = (...rest) => {
   return rest.join(" ");
 };
@@ -13,64 +14,60 @@ const ItemCard = ({
   name,
   image,
   location,
+  description,
   marginTops,
   marginBottoms,
 }) => {
-  const useClick = useClickCard();
+  const [cardClick, setCardClick] = useState(false);
 
   return (
     <Fragment>
-      <span
-        ref={useClick}
-        className={
-          "flex flex-col flex-shrink-0 flex-grow border-solid w-[22.4em] h-[30em]  border-r-[#1c1c21] border-r-[1px] relative pr-[1.04em] pl-[1.04em]  "
-        }
-        style={{
-          marginTop: `${marginTops[index % 3]}em`,
-          marginBottom: `${marginBottoms[index % 3]}em`,
-        }}
+      <div
+        className={` flex flex-row relative`}
+        onClick={() => setCardClick((preClick) => !preClick)}
       >
-        <div className="flex flex-auto  mt-[5.21em]">
+        <span
+          className={
+            "flex flex-col flex-shrink-0 flex-grow  w-64 h-4/5 relative mx-8  "
+          }
+          style={{
+            marginTop: `${marginTops[index % 3]}em`,
+            marginBottom: `${marginBottoms[index % 3]}em`,
+          }}
+        >
           <OverLayImage src={image}></OverLayImage>
-          <div
-            className={cardStyle(
-              "z-10 flex flex-col flex-auto transition duration-500 ease-in-out  hover:opacity-0 border-[1px] border-red-700",
-              index % 3 ? "bg-white" : "bg-black"
-            )}
+          {/*image name*/}
+          {/* <div
+            className="relative flex object-cover object-center w-full h-full px-10 pt-4 mt-2 scale-[0.8]"
+            style={{
+              backgroundImage: "url('svg/background_name_frame.svg')",
+              backgroundRepeat: "no-repeat",
+            }}
           >
-            <div
+            <p
               className={cardStyle(
-                "ml-auto  pt-[0.2em] pr-[0.4em] pl-[0.4em] pb-[0.1em]",
-                index % 3 ? " bg-[#1c1c21]" : "bg-white"
+                "text-[1em] font-[400] uppercase font-['Noto_Sans_KR']  text-[#22223B]  text-center"
               )}
-            >
-              <p
-                className={cardStyle(
-                  "text-[0.94em] font-[400]",
-                  index % 3 ? "text-white" : "text-black"
-                )}
-              >{`${location}`}</p>
-            </div>
+            >{`${name.length >= 16 ? `${name.substring(0, 15)}...` : name}`}</p>
+          </div> */}
+        </span>
 
-            <div className="relative inline-flex left-1/2 top-1/2 ">
-              <p
-                className={cardStyle(
-                  "text-[6.25rem] italic font-[200] leading-none translate-x-[-50%] translate-y-[-50%] uppercase",
-                  index % 3 ? "text-black" : "text-white"
-                )}
-              >{`${index}`}</p>
-            </div>
-            <div className="self-end mt-auto mr-auto mb-[0.52em] ml-[0.52em] ">
-              <p
-                className={cardStyle(
-                  "text-[1.25em] font-[400] uppercase",
-                  index % 3 ? "text-black" : "text-white"
-                )}
-              >{`${name}`}</p>
-            </div>
-          </div>
+        {/*detail data*/}
+        <div
+          className={`flex flex-col  self-start p-12 bg-white border-[0.4em] border-[#C2A38E] h-[30em] text-[#22223B] overflow-auto transition ease-in-out delay-150 scrollbar-hide  ${
+            cardClick === false ? "scale-x-0 w-0" : "scale-x-100 w-[35em]"
+          }`}
+        >
+          <ArtNouveauLine className="self-center h-7" />
+          <h3 className="my-5 font-['Do_Hyeon'] text-4xl font-semibold p-8">
+            {name}
+          </h3>
+          <ArtNouveauLine className="rotate-180 h-7" />
+          <p className="mt-8 font-['Noto_Sans_KR'] font-normal">
+            {description}
+          </p>
         </div>
-      </span>
+      </div>
     </Fragment>
   );
 };

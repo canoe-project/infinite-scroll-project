@@ -83,6 +83,7 @@ const Home = ({ mainHeadCopy, cultureData }) => {
               name={info.title}
               image={info.referenceIdentifier}
               location={info.publisher}
+              description={info.description}
               marginTops={marginTops}
               marginBottoms={marginBottoms}
             ></Card>

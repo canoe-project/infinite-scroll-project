@@ -1,8 +1,8 @@
 const ScrollBar = ({ barRef }) => {
   return (
-    <div className="flex flex-col w-full py-4 absolute bottom-0">
-      <div className="bg-black h-[1px] mb-2" />
-      <div className="flex flex-row  w-full justify-between">
+    <div className="absolute bottom-0 flex flex-col w-full py-4">
+      <div className="bg-[#C2A38E] h-[0.18em] mb-2" />
+      <div className="flex flex-row justify-between w-full">
         <div>
           <p>{`0%`}</p>
         </div>
@@ -15,7 +15,7 @@ const ScrollBar = ({ barRef }) => {
           <p>{`100%`}</p>
         </div>
       </div>
-      <div className="bg-black h-[1px] mt-2" />
+      <div className="bg-[#C2A38E] h-[0.18em] mt-2" />
     </div>
   );
 };

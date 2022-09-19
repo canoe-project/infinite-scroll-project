@@ -11,9 +11,9 @@ const List = ({ children, bar, barRef, handle }) => {
   useScrollBar(listRef, barRef);
 
   return (
-    <div className="relative">
+    <div className="relative mt-auto">
       <div
-        className={`flex overflow-x-auto scrollbar-hide min-h-[30em] transition duration-500 ease-out flex-auto z-10 relative`}
+        className={`flex overflow-x-auto scrollbar-hide min-h-[30em] transition duration-500 ease-out z-10 relative `}
         ref={listRef}
         onWheelCapture={() => {
           setInterval(() => {
